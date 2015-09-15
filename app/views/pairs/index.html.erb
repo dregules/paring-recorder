@@ -1,19 +1,16 @@
 <%= @time.strftime("%A")%> Week <%=   @week_number  %>
 
-<form action="">
-  <select name="studentOne" id="">
-    <% @students.each do |student| %>
-      <option value="<%= student %>">
-        <%= student %>
-      </option>
-    <%end%>
-  </select>
-  <select name="studentTwo" id="">
-    <% @students.each do |student| %>
-      <option value="<%= student %>">
-        <%= student %>
-      </option>
-    <%end%>
-  </select>
-  <input type="submit" value="confirm pair"></input>
-</form>
+
+<%= form_for Pair.new do |f| %>
+  <%= f.select(:studentOne) do %>
+    <% @students.each do |c| %>
+      <%= content_tag(:option, c, value: c) %>
+    <% end %>
+  <% end %>
+  <%= f.select(:studentTwo) do %>
+    <% @students.each do |c| %>
+      <%= content_tag(:option, c, value: c) %>
+    <% end %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
