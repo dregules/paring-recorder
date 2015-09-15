@@ -1,11 +1,16 @@
 <%= @time.strftime("%A")%> Week <%=   @week_number  %>
+
 <form action="">
   <select name="studentOne" id="">
-    <option value="Chris"></option>
-    <option value="Diego"></option>
-    <option value="Tommy"></option>
-    <option value="Pablo"></option>
-    <option value="Barbara"></option>
+    <% @students.each do |student| %>
+      <option value="<%= student %>">
+        <%= student %>
+      </option>
+    <%end%>
+    <!-- <option value="Diego">Diego</option>
+    <option value="Tommy">Tommy</option>
+    <option value="Pablo">Pablo</option> -->
+    <!-- <option value="Barbara"></option>
     <option value="Haroon"></option>
     <option value="Sandy"></option>
     <option value="Mocus"></option>
@@ -16,14 +21,14 @@
     <option value="Mike"></option>
     <option value="Steve"></option>
     <option value="Juan"></option>
-    <option value="Pedro"></option>
+    <option value="Pedro"></option> -->
   </select>
   <select name="studentTwo" id="">
-    <option value="Chris"></option>
-    <option value="Diego"></option>
-    <option value="Tommy"></option>
-    <option value="Pablo"></option>
-    <option value="Barbara"></option>
+    <option value="Chris">Chris</option>
+    <option value="Diego">Diego</option>
+    <option value="Tommy">Tommy</option>
+    <option value="Pablo">Pablo</option>
+    <!-- <option value="Barbara"></option>
     <option value="Haroon"></option>
     <option value="Sandy"></option>
     <option value="Mocus"></option>
@@ -34,7 +39,7 @@
     <option value="Mike"></option>
     <option value="Steve"></option>
     <option value="Juan"></option>
-    <option value="Pedro"></option>
+    <option value="Pedro"></option> -->
   </select>
 </form>
 
