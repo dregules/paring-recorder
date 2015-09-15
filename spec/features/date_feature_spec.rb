@@ -7,7 +7,7 @@ feature 'date' do
   end
 
     scenario 'should display the date' do
-      visit '/pairs'
+      visit pairs_path
       expect(page).to have_content 'Tuesday Week 3'
     end
 end
