@@ -4,5 +4,6 @@ class PairsController < ApplicationController
     start_date = Time.new(2015,8,31,1,00,00)
     @week_number = ((@time - start_date)/(60*60*24*7)+1).to_i
     @students = ['Chris','Diego','Tommy','Pablo']
+    @remaining_students
   end
 end

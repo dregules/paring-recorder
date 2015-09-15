@@ -7,20 +7,22 @@ feature 'pairing input for the day' do
     expect(page).to have_select('studentTwo')
   end
 
-  scenario 'the LEFT dropdown menu  contains all the students' do
+  scenario 'the dropdown menus contain all the students' do
     visit pairs_path
     expect(page).to have_select('studentOne', options: ['Chris', 'Diego', 'Tommy', 'Pablo'])
+    expect(page).to have_select('studentTwo', options: ['Chris', 'Diego', 'Tommy', 'Pablo'])
+
   end
 
-  scenario 'the RIGHT dropdown menu contains remaining students' do
+  # scenario 'the RIGHT dropdown menu contains remaining students' do
+  #   visit pairs_path
+  #   select "Chris", from: 'studentOne'
+  #   expect(page).to have_select('studentTwo', options: ['Diego', 'Tommy', 'Pablo'])
+  # end
+
+  scenario "there is a submit button" do
     visit pairs_path
-    select "Chris", from: 'studentOne'
-    expect(page).to have_select('studentTwo', options: ['Diego', 'Tommy', 'Pablo'])
+    expect(page).to have_selector('input')
   end
 
-  context 'recording the pair input' do
-    scenario 'the pairing result is displayed' do
-
-    end
-  end
 end
