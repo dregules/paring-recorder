@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'date' do
 
   before do
-    Timecop.freeze(Time.local(1990))
+    Timecop.freeze(Time.local(2015, 9, 15, 10, 32, 0))
   end
 
     scenario 'should display the date' do
