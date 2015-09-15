@@ -29,7 +29,7 @@ class PairsController < ApplicationController
   def destroy
     @pair = Pair.find(params[:id])
     @pair.destroy
-    flash[:notice] = "you deleted a pair"
+    flash[:notice] = "<h1>you deleted a pair</h1>"
     redirect_to pairs_path
   end
 

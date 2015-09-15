@@ -1,45 +1,53 @@
-TODAY;
-<h1><%= @time.strftime("%A")%> Week <%= @week_number %></h1>
 
+<section class="page">
+<section class="header">
+  <h1>PAIR RECORDER</h1>
+</section>
 
-======================================================================================================================================================================
+<section class="today">
+  <p>Today is <%= @time.strftime("%A")%> of Week <%= @week_number %></p>
+</section>
 
-<P>PAIR ADDING!!!</P>
-
-<% if @available_students.empty? %>
-    <p> All Paired!!! </p>
-<% else %>
-  <%= form_for Pair.new do |pair| %>
-    <%= pair.select(:pairingDate) do %>
-      <% @dates.each do |date| %>
-        <%= content_tag(:option, date, value: date) %>
+<section class="selectors">
+  <% if @available_students.empty? %>
+      <p> All Paired!!! </p>
+  <% else %>
+    <%= form_for Pair.new do |pair| %>
+      <%= pair.select(:pairingDate) do %>
+        <% @dates.each do |date| %>
+          <%= content_tag(:option, date, value: date) %>
+        <% end %>
       <% end %>
-    <% end %>
-    <%= pair.select(:studentOne) do %>
-      <% @available_students.each do |student| %>
-        <%= content_tag(:option, student, value: student) %>
+      <%= pair.select(:studentOne) do %>
+        <% @available_students.each do |student| %>
+          <%= content_tag(:option, student, value: student) %>
+        <% end %>
       <% end %>
-    <% end %>
-    <%= pair.select(:studentTwo) do %>
-      <% @available_students.each do |student| %>
-        <%= content_tag(:option, student, value: student) %>
+      <%= pair.select(:studentTwo) do %>
+        <% @available_students.each do |student| %>
+          <%= content_tag(:option, student, value: student) %>
+        <% end %>
       <% end %>
-    <% end %>
-    <%= pair.submit %>
-  <% end %>
-<% end %>
-
-
-
-<% @dates.each do |date| %>
-  <h2> <%= date %></h2>
-  <% @pairs.each do |pair| %>
-    <% if pair.pairingDate == date %>
-      <p>
-        <%= pair.studentOne %> & <%= pair.studentTwo %>
-        <%= link_to "Delete", pair_path(pair), method: :delete %>
-      </p>
+      <%= pair.submit %>
     <% end %>
   <% end %>
-<% end %>
+</section>
 
+<section class="listings">
+  <% @dates.each do |date| %>
+    <section class="day">
+      <h2> <%= date %></h2>
+        <ul>
+          <% @pairs.each do |pair| %>
+            <% if pair.pairingDate == date %>
+              <li>
+                <%= pair.studentOne %> & <%= pair.studentTwo %>
+                <%= link_to "x", pair_path(pair), method: :delete %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </section>
+  <% end %>
+</section>
+</section>
