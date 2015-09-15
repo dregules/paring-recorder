@@ -1,16 +1,25 @@
-<%= @time.strftime("%A")%> Week <%=   @week_number  %>
+<%= @time.strftime("%A")%> Week <%= @week_number %>
+
 
 
 <%= form_for Pair.new do |f| %>
   <%= f.select(:studentOne) do %>
-    <% @students.each do |c| %>
+    <% @available_students.each do |c| %>
       <%= content_tag(:option, c, value: c) %>
     <% end %>
   <% end %>
   <%= f.select(:studentTwo) do %>
-    <% @students.each do |c| %>
+    <% @available_students.each do |c| %>
       <%= content_tag(:option, c, value: c) %>
     <% end %>
   <% end %>
   <%= f.submit %>
+<% end %>
+
+
+Pairs chosen today:
+
+<% @pairs.each do |pair| %>
+  <br>
+  <%= pair.studentOne %> & <%= pair.studentTwo %>
 <% end %>
