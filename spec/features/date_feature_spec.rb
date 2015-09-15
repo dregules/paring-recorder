@@ -8,6 +8,6 @@ feature 'date' do
 
     scenario 'should display the date' do
       visit '/pairs'
-      expect(page).to have_content 'Tuesday'
+      expect(page).to have_content 'Tuesday Week 3'
     end
 end
