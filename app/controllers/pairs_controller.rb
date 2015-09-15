@@ -10,16 +10,27 @@ class PairsController < ApplicationController
       @paired_students << pair.studentOne
       @paired_students << pair.studentTwo
     end
-
+    @dates = ["Monday Week 9", "Tuesday Week 9", "Wednesday Week 9","Thursday Week 9","Friday Week 9"]
     @available_students = @students - @paired_students
   end
   def create
-    @pair = Pair.create(pair_params)
+    if params[:pair][:studentOne] == params[:pair][:studentTwo]
+      flash[:notice] = "one MUST NOT pair with oneself"
+    else
+      @pair = Pair.create(pair_params)
+    end
     redirect_to pairs_path
   end
 
   def pair_params
-    params.require(:pair).permit(:studentOne, :studentTwo)
+    params.require(:pair).permit(:studentOne, :studentTwo, :pairingDate)
+  end
+
+  def destroy
+    @pair = Pair.find(params[:id])
+    @pair.destroy
+    flash[:notice] = "you deleted a pair"
+    redirect_to pairs_path
   end
 
 end

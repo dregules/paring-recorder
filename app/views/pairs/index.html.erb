@@ -1,25 +1,41 @@
-<%= @time.strftime("%A")%> Week <%= @week_number %>
+TODAY;
+<h1><%= @time.strftime("%A")%> Week <%= @week_number %></h1>
 
 
+======================================================================================================================================================================
 
-<%= form_for Pair.new do |f| %>
-  <%= f.select(:studentOne) do %>
-    <% @available_students.each do |c| %>
-      <%= content_tag(:option, c, value: c) %>
+<P>PAIR ADDING!!!</P>
+
+<% if @available_students.empty? %>
+    <p> All Paired!!! </p>
+<% else %>
+  <%= form_for Pair.new do |pair| %>
+    <%= pair.select(:pairingDate) do %>
+      <% @dates.each do |date| %>
+        <%= content_tag(:option, date, value: date) %>
+      <% end %>
     <% end %>
-  <% end %>
-  <%= f.select(:studentTwo) do %>
-    <% @available_students.each do |c| %>
-      <%= content_tag(:option, c, value: c) %>
+    <%= pair.select(:studentOne) do %>
+      <% @available_students.each do |student| %>
+        <%= content_tag(:option, student, value: student) %>
+      <% end %>
     <% end %>
+    <%= pair.select(:studentTwo) do %>
+      <% @available_students.each do |student| %>
+        <%= content_tag(:option, student, value: student) %>
+      <% end %>
+    <% end %>
+    <%= pair.submit %>
   <% end %>
-  <%= f.submit %>
 <% end %>
 
 
-Pairs chosen today:
+
+Pairs chosen and the days they were chosen on:
 
 <% @pairs.each do |pair| %>
-  <br>
-  <%= pair.studentOne %> & <%= pair.studentTwo %>
+  <p>
+    <%= pair.studentOne %> & <%= pair.studentTwo %>: <%= pair.pairingDate %>
+    <%= link_to "Delete", pair_path(pair), method: :delete %>
+  </p>
 <% end %>
