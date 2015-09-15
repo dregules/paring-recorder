@@ -31,11 +31,15 @@ TODAY;
 
 
 
-Pairs chosen and the days they were chosen on:
-
-<% @pairs.each do |pair| %>
-  <p>
-    <%= pair.studentOne %> & <%= pair.studentTwo %>: <%= pair.pairingDate %>
-    <%= link_to "Delete", pair_path(pair), method: :delete %>
-  </p>
+<% @dates.each do |date| %>
+  <h2> <%= date %></h2>
+  <% @pairs.each do |pair| %>
+    <% if pair.pairingDate == date %>
+      <p>
+        <%= pair.studentOne %> & <%= pair.studentTwo %>
+        <%= link_to "Delete", pair_path(pair), method: :delete %>
+      </p>
+    <% end %>
+  <% end %>
 <% end %>
+
