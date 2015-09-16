@@ -1,8 +1,9 @@
 
-<section class="page">
 <section class="header">
   <h1>PAIR RECORDER</h1>
 </section>
+
+<section class="page">
 
 <section class="today">
   <p>Today is <%= @time.strftime("%A")%> of Week <%= @week_number %></p>
@@ -13,11 +14,13 @@
       <p> All Paired!!! </p>
   <% else %>
     <%= form_for Pair.new do |pair| %>
-      <%= pair.select(:pairingDate) do %>
-        <% @dates.each do |date| %>
-          <%= content_tag(:option, date, value: date) %>
+      <p>
+        <%= pair.select(:pairingDate) do %>
+          <% @dates.each do |date| %>
+            <%= content_tag(:option, date, value: date) %>
+          <% end %>
         <% end %>
-      <% end %>
+      </p>
       <%= pair.select(:studentOne) do %>
         <% @available_students.each do |student| %>
           <%= content_tag(:option, student, value: student) %>
@@ -28,7 +31,7 @@
           <%= content_tag(:option, student, value: student) %>
         <% end %>
       <% end %>
-      <%= pair.submit %>
+      <p><%= pair.submit %></p>
     <% end %>
   <% end %>
 </section>

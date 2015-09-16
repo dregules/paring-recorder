@@ -3,7 +3,7 @@ class PairsController < ApplicationController
     @time = Time.new
     start_date = Time.new(2015,7,20,1,00,00)
     @week_number = ((@time - start_date)/(60*60*24*7)+1).to_i
-    @students = ['Chris','Diego','Tommy', 'Pablo', 'Bingo', 'Bango', "Pongo", 'Dipsy', 'Bilbo', 'Frodo', 'Timmy', 'Margaret', 'Sally McNally', 'Sandra', 'Bob', 'Saddam']
+    @students = ['Chris','Diego','Tommy', 'Pablo', 'Bill', 'Todd', "Jeremy", 'Dave', 'Terrence', 'Jojo', 'Timmy', 'Margaret', 'Sally', 'Sandra', 'Bob', 'Sophia']
     @pairs = Pair.all
     @paired_students = []
     @pairs.each do |pair|
@@ -15,7 +15,7 @@ class PairsController < ApplicationController
   end
   def create
     if params[:pair][:studentOne] == params[:pair][:studentTwo]
-      flash[:notice] = "one MUST NOT pair with oneself"
+      flash[:notice] = "¡One MUSTN'T pair with oneself!"
     else
       @pair = Pair.create(pair_params)
     end
@@ -29,7 +29,7 @@ class PairsController < ApplicationController
   def destroy
     @pair = Pair.find(params[:id])
     @pair.destroy
-    flash[:notice] = "<h1>you deleted a pair</h1>"
+    flash[:notice] = "you deleted a pair"
     redirect_to pairs_path
   end
 

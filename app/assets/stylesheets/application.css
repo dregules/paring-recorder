@@ -6,7 +6,7 @@
    License: none (public domain)
 */
 
-/*html, body, div, span, applet, object, iframe,
+html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -45,24 +45,69 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}*/
-
-body {
-  margin: 0 auto;
 }
 
 
+* {
+  font-family: "Andale Mono";
+}
+
+body {
+  margin: 0 auto;
+  background-color: #F5FBEF;
+}
+
+.page {
+}
+
+.notice {
+  color: #37123C;
+  padding: 7px;
+  background-color: #C3979F;
+}
 
 h1 {
   font-family: Impact;
   font-size: 50px;
+  color: #37123C;
+  background-color: #C3979F;
 }
 
 select {
   font-size: 20px;
-  font-family: "Andale Mono";
+  font-family: "Andale Mono"; !important
 }
 
 input {
   font-size: 20px;
+  width: 306px;
+}
+
+li {
+  padding-left: 10px;
+}
+
+#pair_pairingDate {
+  width: 306px
+}
+
+#pair_studentOne, #pair_studentTwo {
+  width: 148px
+}
+
+
+.day {
+  padding: 7px;
+}
+
+.today {
+  padding: 3px 2px 3px 3px ;
+}
+
+a:link {
+    color: #C3979F;
+}
+
+a:visited {
+    color: #C3979F;
 }
